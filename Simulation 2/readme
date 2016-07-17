@@ -1,0 +1,6 @@
+commented out line 570: of lte-enb-mac.cc that signified local buffer
+added line 667: of lbt-access-manager.cc
+added line 556: of lte-enb-mac.cc
+commented line 674-708: of lbt-access-manager
+commented line 649-660: of lbt-access-manager
+commented line 670: of lbt-access-manager

@@ -1,0 +1,12 @@
+commented out line 570: of lte-enb-mac.cc that signified local buffer
+added line 667: of lbt-access-manager.cc
+added line 556: of lte-enb-mac.cc
+commented line 674-708: of lbt-access-manager
+commented line 649-660: of lbt-access-manager
+commented line 670: of lbt-access-manager
+added line 194: of lbt-access-manager
+added header 34: of file-transfer-application
+added line 195:of file-transfer-application
+
+conclusion: packets are sent in burst; updateCwBasedOnHarq is called when the traced variable associated with traced callback dlHarqFeedback is changed in lte-enb-mac whose first call is before the start of a packet burst.
+result and images not included in this simulation because they are expected to be the same as of simulation 2.

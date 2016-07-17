@@ -1,0 +1,36 @@
+diff -r a0e01214f384 src/internet/model/tcp-newreno.cc
+--- a/src/internet/model/tcp-newreno.cc	Thu Oct 29 12:42:02 2015 -0700
++++ b/src/internet/model/tcp-newreno.cc	Wed Nov 04 00:36:01 2015 -0800
+@@ -150,6 +150,7 @@
+     { // Slow start mode, add one segSize to cWnd. Default m_ssThresh is 65535. (RFC2001, sec.1)
+       m_cWnd += m_segmentSize;
+       NS_LOG_INFO ("In SlowStart, ACK of seq " << seq << "; update cwnd to " << m_cWnd << "; ssthresh " << m_ssThresh);
++  std::cout << "NewReno " << Simulator::Now ().GetSeconds () << " [node " << m_node->GetId () << "] SS update" << std::endl;
+     }
+   else
+     { // Congestion avoidance mode, increase by (segSize*segSize)/cwnd. (RFC2581, sec.3.1)
+@@ -158,6 +159,7 @@
+       adder = std::max (1.0, adder);
+       m_cWnd += static_cast<uint32_t> (adder);
+       NS_LOG_INFO ("In CongAvoid, updated to cwnd " << m_cWnd << " ssthresh " << m_ssThresh);
++  std::cout << "NewReno " << Simulator::Now ().GetSeconds () << " [node " << m_node->GetId () << "] CA update" << std::endl;
+     }
+ 
+   // Complete newAck processing
+@@ -177,6 +179,7 @@
+       m_inFastRec = true;
+       NS_LOG_INFO ("Triple dupack. Enter fast recovery mode. Reset cwnd to " << m_cWnd <<
+                    ", ssthresh to " << m_ssThresh << " at fast recovery seqnum " << m_recover);
++  std::cout << "NewReno " << Simulator::Now ().GetSeconds () << " [node " << m_node->GetId () << "] enter FR" << std::endl;
+       DoRetransmit ();
+     }
+   else if (m_inFastRec)
+@@ -214,6 +217,8 @@
+   m_nextTxSequence = m_txBuffer->HeadSequence (); // Restart from highest Ack
+   NS_LOG_INFO ("RTO. Reset cwnd to " << m_cWnd <<
+                ", ssthresh to " << m_ssThresh << ", restart from seqnum " << m_nextTxSequence);
++  std::cout << "NewReno " << Simulator::Now ().GetSeconds () << " [node " << m_node->GetId () << "] RTO" << std::endl;
++
+   DoRetransmit ();                          // Retransmit the packet
+ }
+ 

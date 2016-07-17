@@ -1,0 +1,51 @@
+% GNUPLOT: plain TeX with Postscript
+\begingroup
+\catcode`\@=11\relax
+\def\GNUPLOTspecial{%
+  \def\do##1{\catcode`##1=12\relax}\dospecials
+  \catcode`\{=1\catcode`\}=2\catcode\%=14\relax\special}%
+%
+\expandafter\ifx\csname GNUPLOTpicture\endcsname\relax
+  \csname newdimen\endcsname\GNUPLOTunit
+  \gdef\GNUPLOTpicture(#1,#2){\vbox to#2\GNUPLOTunit\bgroup
+    \def\put(##1,##2)##3{\unskip\raise##2\GNUPLOTunit
+      \hbox to0pt{\kern##1\GNUPLOTunit ##3\hss}\ignorespaces}%
+    \def\ljust##1{\vbox to0pt{\vss\hbox to0pt{##1\hss}\vss}}%
+    \def\cjust##1{\vbox to0pt{\vss\hbox to0pt{\hss ##1\hss}\vss}}%
+    \def\rjust##1{\vbox to0pt{\vss\hbox to0pt{\hss ##1}\vss}}%
+    \def\stack##1{\let\\=\cr\tabskip=0pt\halign{\hfil ####\hfil\cr ##1\crcr}}%
+    \def\lstack##1{\hbox to0pt{\vbox to0pt{\vss\stack{##1}}\hss}}%
+    \def\cstack##1{\hbox to0pt{\hss\vbox to0pt{\vss\stack{##1}}\hss}}%
+    \def\rstack##1{\hbox to0pt{\vbox to0pt{\stack{##1}\vss}\hss}}%
+    \vss\hbox to#1\GNUPLOTunit\bgroup\ignorespaces}%
+  \gdef\endGNUPLOTpicture{\hss\egroup\egroup}%
+\fi
+\GNUPLOTunit=0.0500bp
+\GNUPLOTpicture(7200,5040)
+  \special{psfile=images/pstex/indoor_-72_0_ftpLambda_0_5_Laa_throughput.ps llx=0 lly=0 urx=360 ury=252 rwi=3600}
+  \put(5936,803){\rjust{\strut{}operator B (Wi-Fi)}}%
+  \put(5936,1003){\rjust{\strut{}operator A (LAA)}}%
+  \put(3849,140){\cjust{\strut{}Throughput [Mbps]}}%
+  \put(160,2719){%
+  \special{ps: gsave currentpoint currentpoint translate
+630 rotate neg exch neg exch translate}%
+  \cjust{\strut{}CDF}%
+  \special{ps: currentpoint grestore moveto}%
+  }%
+  \put(6440,440){\cjust{\strut{}$140$}}%
+  \put(5643,440){\cjust{\strut{}$120$}}%
+  \put(4846,440){\cjust{\strut{}$100$}}%
+  \put(4049,440){\cjust{\strut{}$80$}}%
+  \put(3252,440){\cjust{\strut{}$60$}}%
+  \put(2454,440){\cjust{\strut{}$40$}}%
+  \put(1657,440){\cjust{\strut{}$20$}}%
+  \put(860,440){\cjust{\strut{}$0$}}%
+  \put(740,4799){\rjust{\strut{}$1$}}%
+  \put(740,3967){\rjust{\strut{}$0.8$}}%
+  \put(740,3135){\rjust{\strut{}$0.6$}}%
+  \put(740,2304){\rjust{\strut{}$0.4$}}%
+  \put(740,1472){\rjust{\strut{}$0.2$}}%
+  \put(740,640){\rjust{\strut{}$0$}}%
+\endGNUPLOTpicture
+\endgroup
+\endinput

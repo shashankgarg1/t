@@ -1,0 +1,9 @@
+used file operation
+motivation: once a channel is acquired, packets are transmitted in burst. so when the function which initiates sending of the packet is called then a file is written which sets a flag to 1
+after the packets are sent then again wait for channel. in this period updatecwbasedonharq function is called which simply initialises or updates the contention window for the next transmission. when this function is first called on, then it reads the same file and checks the flag. if the flag is set to 1 then it updates the contention window as per the rules of 50%,80%,100%. else it follows the NACK_80 percent rule.
+also in the lte-enb-mac.cc the local buffer is not reset as in was the previous case. by doing this, i was getting more than 2 feedbacks which wasn't the case earlier.
+
+changes made:
+scenario-helper: added line 2765-2768 which creates a file and sets the flag
+lte-enb-mac: commented out line 567 which resets the local buffer
+lbt-access-manager: added many lines between 667-720 which reads the file to check the flag and makes updation of the contention window.

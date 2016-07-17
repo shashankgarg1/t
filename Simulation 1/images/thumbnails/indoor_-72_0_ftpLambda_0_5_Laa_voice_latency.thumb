@@ -1,0 +1,15 @@
+<div class="plot">
+    <a class="thumbnail" href="../png/indoor_-72_0_ftpLambda_0_5_Laa_voice_latency.png">
+      <img src="indoor_-72_0_ftpLambda_0_5_Laa_voice_latency.png" alt="EDThresh=-72.0, FtpLambda=0.5, CellA=Laa, UDP  CDF Voice Latency [ms] " width="200" height="150" />
+    </a>
+    <div class="resource">
+     eps: 
+    <a  href="../ps/indoor_-72_0_ftpLambda_0_5_Laa_voice_latency.eps">image</a>
+    <a  href="../scripts/indoor_-72_0_ftpLambda_0_5_Laa_voice_latency_eps.gnuplot">gnuplot script</a>
+    </div>
+    <div class="resource">
+     pstex: 
+    <a href="../pstex/indoor_-72_0_ftpLambda_0_5_Laa_voice_latency.ps">ps part</a>
+    <a href="../pstex/indoor_-72_0_ftpLambda_0_5_Laa_voice_latency.tex">tex part</a>
+    </div>
+</div>
